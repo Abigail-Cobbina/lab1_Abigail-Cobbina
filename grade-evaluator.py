@@ -37,7 +37,11 @@ def evaluate_grades(data):
     'data' is a list of dictionaries containing the assignment records.
     """
     print("\n--- Processing Grades ---")
-    
+   
+    if len(data) == 0:
+        print("Error: CSV file is empty.")
+        sys.exit(1)
+
     # TODO: a) Check if all scores are percentage based (0-100)
     # TODO: b) Validate total weights (Total=100, Summative=40, Formative=60)
     # TODO: c) Calculate the Final Grade and GPA
