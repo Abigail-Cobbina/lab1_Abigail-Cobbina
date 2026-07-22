@@ -50,6 +50,32 @@ def evaluate_grades(data):
         if assignment['score'] < 0 or assignment['score'] > 100:
             print("Error: Score must be between 0 and 100.")
             sys.exit(1)
+    
+    total_weight = 0
+    formative_weight = 0
+    summative_weight = 0
+
+    for assignment in data:
+        total_weight += assignment['weight']
+
+        if assignment['group'] == "Formative":
+            formative_weight += assignment['weight']
+
+        elif assignment['group'] == "Summative":
+            summative_weight += assignment['weight']
+
+
+    if total_weight != 100:
+        print("Error: Total weight must equal 100.")
+        sys.exit(1)
+
+    if formative_weight != 60:
+        print("Error: Formative weight must equal 60.")
+        sys.exit(1)
+
+    if summative_weight != 40:
+        print("Error: Summative weight must equal 40.")
+        sys.exit(1)
 
 if __name__ == "__main__":
     # 1. Load the data
