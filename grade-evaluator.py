@@ -92,6 +92,18 @@ def evaluate_grades(data):
         elif assignment['group'] == "Summative":
             summative_grade += weighted_score
 
+    gpa = (total_grade / 100) * 5.0
+
+    if formative_grade >= 30 and summative_grade >= 20:
+        status = "PASSED"
+    else:
+        status = "FAILED"
+
+    
+    print(f"Total Grade: {total_grade}%")
+    print(f"GPA: {gpa}")
+    print(f"Status: {status}")
+
 if __name__ == "__main__":
     # 1. Load the data
     course_data = load_csv_data()
