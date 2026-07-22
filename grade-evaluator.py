@@ -110,6 +110,26 @@ def evaluate_grades(data):
         if assignment['group'] == "Formative" and assignment['score'] < 50:
             failed_formative.append(assignment)
 
+    highest_weight = 0
+
+    for assignment in failed_formative:
+        if assignment['weight'] > highest_weight:
+            highest_weight = assignment['weight']
+
+    resubmission = []
+
+    for assignment in failed_formative:
+        if assignment['weight'] == highest_weight:
+            resubmission.append(assignment)
+
+    if resubmission:
+        print("Eligible for resubmission:")
+
+        for assignment in resubmission:
+            print(f"- {assignment['assignment']}")
+    else:
+        print("No resubmission required.")        
+
 if __name__ == "__main__":
     # 1. Load the data
     course_data = load_csv_data()
