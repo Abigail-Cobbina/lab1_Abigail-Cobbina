@@ -76,6 +76,21 @@ def evaluate_grades(data):
     if summative_weight != 40:
         print("Error: Summative weight must equal 40.")
         sys.exit(1)
+    
+    total_grade = 0
+    formative_grade = 0
+    summative_grade = 0
+
+    for assignment in data:
+        weighted_score = (assignment['score'] * assignment['weight']) / 100
+
+        total_grade += weighted_score
+
+        if assignment['group'] == "Formative":
+            formative_grade += weighted_score
+
+        elif assignment['group'] == "Summative":
+            summative_grade += weighted_score
 
 if __name__ == "__main__":
     # 1. Load the data
