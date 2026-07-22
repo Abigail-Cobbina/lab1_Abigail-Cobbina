@@ -104,6 +104,12 @@ def evaluate_grades(data):
     print(f"GPA: {gpa}")
     print(f"Status: {status}")
 
+    failed_formative = []
+
+    for assignment in data:
+        if assignment['group'] == "Formative" and assignment['score'] < 50:
+            failed_formative.append(assignment)
+
 if __name__ == "__main__":
     # 1. Load the data
     course_data = load_csv_data()
