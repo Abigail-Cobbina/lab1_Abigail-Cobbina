@@ -46,7 +46,10 @@ def evaluate_grades(data):
     #          and determine which one(s) have the highest weight for resubmission.
     # TODO: f) Print the final decision (PASSED / FAILED) and resubmission options
     
-    pass
+    for assignment in data:
+        if assignment['score'] < 0 or assignment['score'] > 100:
+            print("Error: Score must be between 0 and 100.")
+            sys.exit(1)
 
 if __name__ == "__main__":
     # 1. Load the data
